@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { ItemType } from "../data/item-type";
 
 function useData() {
-  const [items, setItems] = useState<any[]>([]);
+  const [items, setItems] = useState<ItemType[]>([]);
 
   function fetchItems() {
     fetch(`${process.env.API_URL}/items`)
@@ -14,7 +15,11 @@ function useData() {
 
   useEffect(() => {
     fetchItems();
-    setInterval(fetchItems, 10000);
+    const intervalId = setInterval(fetchItems, 10000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
   }, []);
 
   return items;
