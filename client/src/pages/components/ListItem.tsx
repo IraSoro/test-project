@@ -7,10 +7,10 @@ const ListItem: React.FC<any> = ({
   name,
   description,
   onClick,
-  isactive,
+  isActive,
 }) => {
   return (
-    <li className={isactive ? "list-item active" : "list-item"}>
+    <li className={isActive ? "list-item active" : "list-item"}>
       <Link to={`/${id}`}>
         <div className={"list-item-actions"}>
           <div>
@@ -19,9 +19,9 @@ const ListItem: React.FC<any> = ({
           <Button
             onClick={onClick}
             id={id}
-            disabled={isactive}
+            disabled={isActive}
           >
-            {isactive ? "Active" : "Set Active"}
+            {isActive ? "Active" : "Set Active"}
           </Button>
         </div>
         <div>{name}</div>
