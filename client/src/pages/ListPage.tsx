@@ -31,8 +31,6 @@ function ListPage() {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const activeItemText = activeItemId ?? "Empty";
-
   const debouncedQuery = useDebounce(query, 500);
 
   useEffect(() => {
@@ -63,7 +61,7 @@ function ListPage() {
     <div className="list-wrapper">
       <div className="list-header">
         <h1 className="list-title">Items List</h1>
-        <SubTitle>{activeItemText}</SubTitle>
+        <SubTitle>{activeItemId ?? "Empty"}</SubTitle>
         <button onClick={handleSortClick}>
           Sort ({sortBy === "ASC" ? "ASC" : "DESC"})
         </button>
