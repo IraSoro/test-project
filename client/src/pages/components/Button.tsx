@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from "react";
+import React from "react";
 
 interface ButtonProps {
   id: number;
@@ -8,13 +8,10 @@ interface ButtonProps {
 }
 
 const Button = (props: ButtonProps) => {
-  const handleClick = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.preventDefault();
-      props.onClick(props.id);
-    },
-    [props.id, props.onClick],
-  );
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    props.onClick(props.id);
+  };
 
   return (
     <button
@@ -26,4 +23,4 @@ const Button = (props: ButtonProps) => {
   );
 };
 
-export default memo(Button);
+export default Button;
