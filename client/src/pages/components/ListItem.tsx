@@ -1,31 +1,32 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 
-const ListItem: React.FC<any> = ({
-  id,
-  name,
-  description,
-  onClick,
-  isActive,
-}) => {
+interface ListItemProps {
+  id: number;
+  name: string;
+  description: string;
+  onClick: (id: number) => void;
+  isActive: boolean;
+}
+
+const ListItem = (props: ListItemProps) => {
   return (
-    <li className={isActive ? "list-item active" : "list-item"}>
-      <Link to={`/${id}`}>
-        <div className={"list-item-actions"}>
+    <li className={props.isActive ? "list-item active" : "list-item"}>
+      <Link to={`/${props.id}`}>
+        <div className="list-item-actions">
           <div>
-            ID: <b>{id}</b>
+            ID: <b>{props.id}</b>
           </div>
           <Button
-            onClick={onClick}
-            id={id}
-            disabled={isActive}
+            onClick={props.onClick}
+            id={props.id}
+            disabled={props.isActive}
           >
-            {isActive ? "Active" : "Set Active"}
+            {props.isActive ? "Active" : "Set Active"}
           </Button>
         </div>
-        <div>{name}</div>
-        <div className={"list-item__description"}>{description}</div>
+        <div>{props.name}</div>
+        <div className="list-item__description">{props.description}</div>
       </Link>
     </li>
   );
