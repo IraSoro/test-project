@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-
-type ItemType = {
-  id: number;
-  name: string;
-  description: string;
-};
+import { ItemType } from "../data/item-type";
 
 function SinglePage() {
   const { id } = useParams();
@@ -18,15 +13,21 @@ function SinglePage() {
       .catch((err) => {
         console.error("Failed to fetch item", err);
       });
-  }, []);
+  }, [id]);
 
   return (
     <div className="detail">
       <Link to={"/"}>Go Back</Link>
-      <h2>Item Details</h2>
-      <p>ID: {item!.id}</p>
-      <p>Name: {item!.name}</p>
-      <p>Description: {item!.description}</p>
+      {!item ? (
+        <p>item not found</p>
+      ) : (
+        <>
+          <h2>Item Details</h2>
+          <p>ID: {item.id}</p>
+          <p>Name: {item.name}</p>
+          <p>Description: {item.description}</p>
+        </>
+      )}
     </div>
   );
 }
