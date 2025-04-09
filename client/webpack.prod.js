@@ -1,8 +1,7 @@
-const common = require('./webpack.common');
+const common = require("./webpack.common");
 
 module.exports = {
   ...common,
-  devtool: 'eval-source-map',
-  mode: 'production'
+  devtool: "eval-source-map",
+  mode: "production",
 };
-

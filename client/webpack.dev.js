@@ -1,10 +1,10 @@
-const path = require('path');
-const common = require('./webpack.common');
+const path = require("path");
+const common = require("./webpack.common");
 
 module.exports = {
   ...common,
-  mode: 'development',
-  devtool: 'eval-source-map',
+  mode: "development",
+  devtool: "eval-source-map",
   resolve: {
     ...common.resolve,
   },
@@ -12,7 +12,6 @@ module.exports = {
     port: process.env.DOCKER_CLIENT_PORT,
     hot: true,
     open: false,
-    historyApiFallback: true
-  }
+    historyApiFallback: true,
+  },
 };
-

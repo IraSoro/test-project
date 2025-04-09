@@ -3,24 +3,18 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-
-
 body {
   margin: 0;
 }
-
 
 main {
   display: block;
 }
 
-
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
-
-
 
 hr {
   box-sizing: content-box;
@@ -28,18 +22,14 @@ hr {
   overflow: visible;
 }
 
-
 pre {
   font-family: monospace, monospace;
   font-size: 1em;
 }
 
-
-
 a {
   background-color: transparent;
 }
-
 
 abbr[title] {
   border-bottom: none;
@@ -47,12 +37,10 @@ abbr[title] {
   text-decoration: underline dotted;
 }
 
-
 b,
 strong {
   font-weight: bolder;
 }
-
 
 code,
 kbd,
@@ -169,7 +157,6 @@ textarea {
   -webkit-appearance: none;
 }
 
-
 ::-webkit-file-upload-button {
   -webkit-appearance: button;
   font: inherit;
@@ -187,7 +174,8 @@ template {
   display: none;
 }
 
-ul, li {
+ul,
+li {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -212,7 +200,6 @@ ul, li {
 }
 
 .list-header {
-
 }
 
 .list {
