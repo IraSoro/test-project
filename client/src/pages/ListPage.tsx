@@ -3,6 +3,22 @@ import { ListItem } from "./components";
 import useData from "./useData";
 import useSort from "./useSort";
 
+const useDebounce = (value: string, delay: number): string => {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+};
+
 const SubTitle = ({ children }: { children: React.ReactNode }) => (
   <h2 className="list-subtitle">Active Item ID: {children}</h2>
 );
@@ -17,6 +33,8 @@ function ListPage() {
 
   const activeItemText = activeItemId ?? "Empty";
 
+  const debouncedQuery = useDebounce(query, 500);
+
   useEffect(() => {
     if (items.length > 0) {
       setLoading(false);
@@ -24,14 +42,14 @@ function ListPage() {
   }, [items]);
 
   const filteredItems = useMemo(() => {
-    const normalizedQuery = query
+    const normalizedQuery = debouncedQuery
       .toLowerCase()
       .trim()
       .replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     if (!normalizedQuery) return sortedItems;
 
     return sortedItems.filter((item) => `${item.id}`.includes(normalizedQuery));
-  }, [sortedItems, query]);
+  }, [sortedItems, debouncedQuery]);
 
   const handleItemClick = (id: number) => {
     setActiveItemId(id);
